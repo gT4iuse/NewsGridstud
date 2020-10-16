@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/23f2926a8f.js" crossorigin="anonymous"> </script>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Staatliches&display=swap" rel="stylesheet">
+  rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" media="screen and(max-width: 768px)" href="css/mobile.css">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon (5).ico">
+  <title>NewsGrid | Latest News</title>
+  <style>
+    /* after body*/
+
+    p {
+      margin: .5rem 0;
+
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'staatliches'cursive;
+      margin-bottom: .55rem;
+      line-height: 1.3;
+      text-transform: uppercase;
+      font-size: 0.55rem;
+    }
+
+    #showcase {
+      color: #fff;
+      background: #333;
+      padding: 2rem;
+      position: relative;
+    }
+
+    #showcase:before {
+      content: '';
+      background: url('../img/featured.jpg') no-repeat center center/cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+    }
+
+    #showcase .showcase-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+    }
+
+    #showcase .showcase-content {
+      z-index: 1;
+    }
+
+    /* utility*/
+    .category {
+      display: inline-block;
+      color: #fff;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      padding: 0.4rem 0.6rem;
+      border-radius: 15px;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-sports {
+      background: var(--sports-color)
+    }
+
+    .category-ent {
+      background: var(--ent-color)
+    }
+
+    .category-tech {
+      background: var(--tech-color)
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      background: var(--dark-color);
+      color: #fff;
+      padding: 0.5rem 1.5rem;
+      /*end of utility*/
+    }
+
+    .btn-light {
+      background: var(--light-color)
+    }
+
+    .btn-primary {
+      background: var(--primary-color)
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color)
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1rem;
+    }
+
+    .bg-dark {
+      background: var(--dark-color);
+      color: #fff;
+    }
+
+    .bg-primary {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .bg-secondary {
+      background: var(--secondary-color);
+      color: #fff;
+    }
+
+    .bg-dark h1,
+    .bg-dark h2,
+    .bg-dark h3,
+    .bg-dark a,
+    .bg-primary h1,
+    .bg-primary h2,
+    .bg-primary h3,
+    .bg-primary a,
+    .bg-secondary h1,
+    .bg-secondary h2,
+    .bg-secondary h3,
+    .bg-secondary a {
+      color: #fff;
+    }
+
+    .py-1 {
+      padding: 1.5rem 0
+    }
+
+    .py-2 {
+      padding: 2rem 0
+    }
+
+    .py-3 {
+      padding: 3rem 0
+    }
+
+    .p-1 {
+      padding: 1.5rem
+    }
+
+    .p-2 {
+      padding: 2rem
+    }
+
+    .p-3 {
+      padding: 3rem
+    }
+
+    .list li {
+      padding: .5rem 0;
+      border-bottom: #555 dotted 1px;
+      width: 90%
+    }
+
+    .list li a:hover {
+      color: var(--primary-color) !important;
+    }
+
+    */ #showcase .showcase-content p {
+      margin-bottom: 1rem;
+    }
+
+    /* Home Articles */
+    #home-articles .articles-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1rem;
+
+    }
+
+    #home-articles .articles-container>*:first-child,
+    #home-articles .articles-container>*:last-child {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+      align-items: center;
+      grid-column: 1/ span 2;
+    }
+
+    #home-articles .articles-container>*:last-child {
+      grid-column: 2 / span 2;
+    }
+
+    /* Footer */
+    #main-footer {
+      background: var(--dark-color);
+      color: #fff;
+    }
+
+    #main-footer img {
+      width: 150px;
+    }
+
+    #main-footer a {
+      color: #fff;
+    }
+
+    #main-footer .footer-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1.5rem;
+    }
+
+    #main-footer .footer-container>*:last-child {
+      background: #444;
+      grid-column: 1 / span 4;
+      text-align: center;
+      padding: .5rem;
+      font-size: 0.75;
+    }
+
+    #main-footer .footer-container input[type="email"] {
+      width: 90%;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #main-footer .footer-container input[type="submit"] {
+      width: 90%;
+      /* padding:0.5rem;
+    margin-bottom: 0.5rem;  */
+
+    }
+
+
+
+
+
+    /* Navigation2  */
+
+    .main-nav .social {
+      display: none;
+    }
+
+
+    .main-nav #container {
+      grid-template-columns: 1fr;
+      grid-gap: 1.2rem;
+    }
+
+    .main-nav ul,
+    .main-nav .logo {
+      justify-self: center;
+
+    }
+
+    .main-nav ul li a {
+      padding: 0.50rem;
+    }
+
+    #home-articles .articles-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    #home-articles .articles-container>*:first-child,
+    #home-articles .articles-container>*:last-child {
+      grid-template-columns: 1fr;
+      grid-column: 1;
+    }
+
+    @media(max-width: 600px) {
+
+      /* stack Grid Items */
+      #showcase .showcase-container,
+      #home-articles .articles-container,
+      #main-footer .footer-container {
+        grid-template-columns: 1fr;
+
+      }
+
+      #main-footer .footer-container>*:last-child {
+        grid-column: 1;
+      }
+
+
+
+      #main-footer .footer-container>*:first-child,
+      #main-footer .footer-container>*:nth-child(2) {
+        border-bottom: #444 dotted 1px;
+        padding-bottom: 1rem;
+      }
+
+      /*.l-heading {
+      font-size: 2rem;
+    } */
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .main-nav ul li a {
+      padding: 0.5rem;
+    } */
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <nav class="main-nav">
+    <div id="container">
+      <img src="img/logo.png" alt="NewsGrid" class="logo">
+      <div class="social">
+        <a href="http://facebook.com" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="http://twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+        <a href="http://instagram.com" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="http://youtube.com" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+      </div>
+      <ul>
+        <li><a class="current" href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+</body>
+<!-- Showcase-->
+<header id="showcase">
+  <div class="container">
+    <div class="showcase-container">
+      <div class="showcase-content">
+        <div class="category 
+      category-sports">Sports</div>
+        <h1>Some Sports Article</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, consectetur. A odit aliquam deleniti
+          distinctio reprehenderit doloremque nemo, molestiae sint facere ex ratione veniam! Cumque distinctio quod a
+          tenetur minima. </p>
+        <a href="article.html" class="btn 
+        btn-primary">Read More</a>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Home Articles-->
+<section id="home-articles" class="py-2">
+  <div class="container">
+    <h2>Editor Picks</h2>
+    <div class="articles-container">
+      <article class="card">
+        <img src="img/articles/ent1.jpg" alt="">
+        <div>
+          <div class="category category-ent">Entertainment</div>
+          <h3>
+            <a href="article.html">Lorem ipsum dolor sit amet.</a>
+          </h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+            officiis dicta modi amet.</p>
+        </div>
+      </article>
+      <article class="card bg-dark">
+        <div class="category category-sports">Sports</div>
+        <h3>
+          <a href="article.html">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+          officiis dicta modi amet.</p>
+      </article>
+      <article class="card ">
+        <img src="img/articles/tech1.jpg" alt="">
+        <div class="category category-tech">Technology</div>
+        <h3>
+          <a href="article.html">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+          officiis dicta modi amet.</p>
+      </article>
+      <article class="card ">
+
+        <div class="category category-sports">Sports</div>
+        <h3>
+          <a href="article.html">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+          officiis dicta modi amet.</p>
+        <img src="img/articles/sports1.jpg" alt="">
+      </article>
+      <article class="card">
+        <img src="img/articles/tech2.jpg" alt="">
+        <div class="category category-tech">Technology</div>
+        <h3>
+          <a href="article.html">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+          officiis dicta modi amet.</p>
+      </article>
+      <article class="card bg-primary">
+        <div class="category category-sports">Sports</div>
+        <h3>
+          <a href="article.html">Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+          officiis dicta modi amet.</p>
+      </article>
+      <article class="card">
+        <div>
+          <div class="category category-ent">Entertainment</div>
+          <h3>
+            <a href="article.html">Lorem ipsum dolor sit amet.</a>
+          </h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi minus sed commodi ipsam adipisci nulla quae
+            officiis dicta modi amet.</p>
+        </div>
+        <img src="img/articles/ent2.jpg" alt="">
+      </article>
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer id="main-footer" class="py-2">
+  <div class="container footer-container">
+    <div>
+      <img src="img/logo_light.png" alt="NewsGrid">
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit consequuntur ea explicabo rerum architecto
+        eligendi blanditiis atque aspernatur esse nesciunt?</p>
+    </div>
+    <div>
+      <h3>Email NewsLetter</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <form>
+        <input type="email" placeholder="Enter Email...">
+        <input type="submit" value="Subscribe" class="btn btn-primary">
+      </form>
+    </div>
+    <div>
+      <h3>Site Links</h3>
+      <ul class="list">
+        <li><a href="#">Help & Support</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Join Our Club.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, totam?</p>
+      <a href="#" class="btn btn-secondary">Join Now</a>
+    </div>
+    <div>
+      <p>Copyright &copy; 2019, all Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>
